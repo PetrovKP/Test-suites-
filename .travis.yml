@@ -8,4 +8,4 @@ install:
   - pip install django-bootstrap3
   - pip install PyMySQL
 
-script: ./suiltes/manage.py test site_config
+script: ./suiltes/manage.py test app
