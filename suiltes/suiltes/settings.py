@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'suites',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
-        'PASSWORD': 'qwerty',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         },
