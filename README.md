@@ -8,5 +8,5 @@
 
 * Python  3.4
 * Django  1.9
-* PyMySQL 0.7
+* [PyMySQL 0.7](https://github.com/PyMySQL/PyMySQL/)
 * [Bootstrap 3](https://github.com/dyve/django-bootstrap3)
