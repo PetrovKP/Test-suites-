@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Выберете тест</label>
+            <select name="name" id="name" class="form-control">
+                {% for name in list_test %}
+                    <option>{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Удалить</button>
+    </form>
+
+    <br/>
+    {% if isAdd == 'ok' %}
+        <div class="alert alert-success">Успешно удалён</div>
+    {% elif isAdd == 'error' %}
+        <div class="alert alert-danger">Не удалён</div>
+    {% endif %}
+
+{% endblock %}
