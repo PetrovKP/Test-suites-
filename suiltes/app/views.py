@@ -26,10 +26,25 @@ def run(request):
 def add(request):
     if request.method == 'POST':
         try:
-            test = Test(name = request.POST['name'], run = request.POST['srtingrun'])
+            test = Test(name = request.POST['name'], run = request.POST['run'])
             test.save()
-            return render(request, "add.html", { "isAdd": "ok" })
+            return render(request, "add.html", {"isAdd": "ok"})
         except IntegrityError:
-            return render(request, "add.html", { "isAdd": "error" })
+            return render(request, "add.html", {"isAdd": "error"})
 
     return render(request, "add.html")
+
+
+# Удаление теста
+def delete(request):
+    tests_name = [obj.name for obj in Test.objects.all()]
+    if request.method == 'POST':
+        try:
+            test = Test.objects.get(name = request.POST['name'])
+            test.delete()
+            tests_name.remove(test.name)
+            return render(request, "delete.html", {"isAdd": 'ok', "list_test": tests_name})
+        except:
+            return render(request, "delete.html", {"isAdd": 'error', "list_test": tests_name})
+
+    return render(request, "delete.html", {"list_test": tests_name})
