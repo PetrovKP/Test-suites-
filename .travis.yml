@@ -18,7 +18,6 @@ install:
 
 before_script:
   - mysql -e 'create database suites;'
+  - python ./suiltes/manage.py migrate
   # - python ./suiltes/manage.py syncdb --noinput
-script:
-  - python manage.py test
 script: ./suiltes/manage.py test app
