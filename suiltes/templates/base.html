@@ -1,0 +1,23 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+
+{% block bootstrap3_title %}{% block title %}{% endblock %}{% endblock %}
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_content %}
+
+    <div class="container">
+    <nav  class="navbar navbar-default">
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'index' %}">Домой</a></li>
+                <li><a href="{% url 'index' %}">Добавить тест</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        {% block content %}{% endblock %}
+
+    </div>
+{% endblock %}
