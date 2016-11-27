@@ -5,17 +5,17 @@
 {% block title %}Старт{% endblock %}
 
 {% block content %}
-
-    <h2>Доступные тесты</h2>
+    <h3>Доступные тесты</h3>
 
     <form method="POST">
         {% csrf_token %}
-
-            <select name="name" class="form-control">
-                {% for name in list_test %}
+        <div class="form-group">
+        <select name="name" class="form-control">
+            {% for name in list_test %}
                 <option>{{ name }}</option>
-                {% endfor %}
-            </select>
+            {% endfor %}
+        </select>
+        </div>
         <button type="submit" class="btn btn-primary">Запустить</button>
     </form>
 

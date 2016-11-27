@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}Добаление{% endblock %}
+
+{% block content %}
+
+    <form method="POST" >
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Название теста</label>
+            <input type="text" class="form-control"  id="name" name="name" placeholder="имя" pattern="\w+" required>
+            <label for="srtingrun">Строка запуска</label>
+            <input type="text" class="form-control" id="srtingrun" name="srtingrun" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+
+    <br/>
+    {% if isAdd == 'ok' %}
+        <div class="alert alert-success">Успешно добавлен</div>
+    {% elif isAdd == 'error' %}
+        <div class="alert alert-danger">Не добавлен</div>
+    {% endif %}
+
+{% endblock %}
