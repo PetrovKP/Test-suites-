@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'suiltes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'debts',
+        'NAME': 'suites',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'petrov',
         'PASSWORD': 'petrov2016',
