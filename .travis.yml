@@ -1,0 +1,11 @@
+language: python
+
+python:
+  - 3.4
+
+install:
+  - pip install Django==1.9
+  - pip install django-bootstrap3
+  - pip install PyMySQL
+
+script: ./suiltes/manage.py test site_config
