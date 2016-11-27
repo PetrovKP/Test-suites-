@@ -1,4 +1,12 @@
+sudo: false
+
+notifications:
+  email: false
+
 language: python
+
+services:
+  - mysql
 
 python:
   - 3.4
@@ -8,4 +16,9 @@ install:
   - pip install django-bootstrap3
   - pip install PyMySQL
 
+before_script:
+  - mysql -e 'create database suites;'
+  - python ./suiltes/manage.py syncdb --noinput
+script:
+  - python manage.py test
 script: ./suiltes/manage.py test app
