@@ -5,16 +5,16 @@
 {% block title %}Старт{% endblock %}
 
 {% block content %}
-    <h3>Доступные тесты</h3>
 
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-        <select name="name" class="form-control">
-            {% for name in list_test %}
-                <option>{{ name }}</option>
-            {% endfor %}
-        </select>
+            <label for="name">Выберете тест</label>
+            <select name="name" class="form-control">
+                {% for name in list_test %}
+                    <option>{{ name }}</option>
+                {% endfor %}
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Запустить</button>
     </form>
