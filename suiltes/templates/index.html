@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Список тестов</title>
+</head>
+<body>
+    {% if list_test %}
+    <ul>
+    {% for name in list_test %}
+        <p>{{ name }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет тестов</p>
+{% endif %}
+</body>
+</html>
