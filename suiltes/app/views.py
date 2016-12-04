@@ -5,6 +5,7 @@ from .models import Test, UploadScriptForm
 
 from os import path
 
+
 # Стартовая страница
 def index(request):
     if request.method == 'POST':
@@ -35,6 +36,7 @@ def add_test(request):
 
     return render(request, "add_test.html")
 
+
 # Добавления скрипта
 def add_script(request):
     if request.method == 'POST':
@@ -47,10 +49,12 @@ def add_script(request):
     return render(request, "add_script.html", {'form': form})
 
 
+# Сохранение скрипта
 def handle_uploaded_file(file, name):
-    with open(path.join('..', 'scripts/') + name + '.py', 'wb+') as destination:
+    with open(path.join('..', 'scripts',  name + '.py'), 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
+
 
 # Удаление теста
 def delete(request):
