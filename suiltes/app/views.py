@@ -40,7 +40,7 @@ def add_script(request):
     if request.method == 'POST':
         form = UploadScriptForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['script'], request.POST['title'])
+            handle_uploaded_file(request.FILES['script'], request.FILES['script'].name)
             return render(request, "add_script.html", {'form': form})
     else:
         form = UploadScriptForm()
@@ -48,7 +48,7 @@ def add_script(request):
 
 
 def handle_uploaded_file(file, name):
-    with open(path.join('..', 'scripts/') + name + '.py', 'wb+') as destination:
+    with open(path.join('..', 'scripts/') + name , 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
 
