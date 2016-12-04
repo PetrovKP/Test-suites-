@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name = 'index'),
     # url(r'\d', views.run)
-    url(r'^add/$', views.add, name = 'add'),
+    url(r'^add_test/$', views.add_test, name = 'add_test'),
+    url(r'^add_script/$', views.add_script, name = 'add_script'),
     url(r'^delete/$', views.delete, name = 'delete'),
 ]
