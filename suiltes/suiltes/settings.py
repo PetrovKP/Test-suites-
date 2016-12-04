@@ -18,7 +18,6 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -40,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'bootstrap3',
+    'app',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -58,7 +60,9 @@ ROOT_URLCONF = 'suiltes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,11 +83,11 @@ WSGI_APPLICATION = 'suiltes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'debts',
+        'NAME': 'suites',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'petrov',
-        'PASSWORD': 'petrov2016',
-        'HOST': '94.142.139.84',
+        'USER': 'travis',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         },
 }
