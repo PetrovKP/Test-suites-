@@ -51,7 +51,7 @@ def add_script(request):
 
 # Сохранение скрипта
 def handle_uploaded_file(file, name):
-    with open(path.join('..', 'scripts',  name + '.py'), 'wb+') as destination:
+    with open(path.join('..', 'scripts',  name +'.py'), 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
 
