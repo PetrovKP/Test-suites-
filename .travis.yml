@@ -15,4 +15,4 @@ install:
   - pip install Django==1.9
   - pip install django-bootstrap3
 
-script: ./suiltes/manage.py test app
+script: ./suiltes/manage.py test
