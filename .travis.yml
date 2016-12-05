@@ -15,8 +15,8 @@ install:
   - pip install Django==1.9
   - pip install django-bootstrap3
 
-# before_script:
-#   - python ./suiltes/manage.py migrate
+before_script:
+  - python ./suiltes/manage.py migrate
 
 script:
   - python ./suiltes/manage.py test
