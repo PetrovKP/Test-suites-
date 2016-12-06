@@ -12,5 +12,4 @@ class Test(models.Model):
 
 
 class UploadScriptForm(forms.Form):
-    title = forms.CharField(label='Название',max_length=50)
-    script = forms.FileField(label='Скрипт')
+    script = forms.FileField()

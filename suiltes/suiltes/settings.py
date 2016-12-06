@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'NAME': 'suites',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'travis',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'USER': 'petrov',
+        'PASSWORD': 'petrov2016',
+        'HOST': '94.142.139.84',
         'PORT': '3306',
         },
 }
