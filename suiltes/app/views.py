@@ -5,6 +5,8 @@ from .models import Test, UploadScriptForm
 
 from os import path
 
+from scripts import executive
+
 # Стартовая страница
 def index(request):
     if request.method == 'POST':
@@ -19,8 +21,8 @@ def index(request):
 # Запуск скрипта и вывод результов
 def run(request):
     test = Test.objects.get(id=request.session['id'])
-
-    return render(request, 'run.html', {"test": test.run})
+    out = executive.execut()
+    return render(request, 'run.html', {"test": out})
 
 
 # Добавления теста
