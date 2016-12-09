@@ -2,8 +2,8 @@ from subprocess import Popen, PIPE
 
 
 def execut():
-	cmd = ["py", "-2", "./scripts/run_test.py"]
-	p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+	cmd = ["py", "-2", "./run_test.py"]
+	p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True, cwd="scripts")
 
 	out, err = p.communicate()
 
