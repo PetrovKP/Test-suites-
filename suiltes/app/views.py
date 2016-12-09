@@ -3,10 +3,8 @@ from django.db import IntegrityError
 
 from .models import Test, UploadScriptForm
 
-from os import path
-
-from scripts import executive
-
+from os import path, chdir
+import os
 # Стартовая страница
 def index(request):
     if request.method == 'POST':
@@ -20,8 +18,12 @@ def index(request):
 
 # Запуск скрипта и вывод результов
 def run(request):
-    test = Test.objects.get(id=request.session['id'])
-    out = executive.execut()
+    BASE_DIR = "../scripts/"
+    chdir(BASE_DIR)
+    from .executive import executive
+    # test = Test.objects.get(id=request.session['id'])
+    # out = executive.executive(test.run)
+    out = os.getcwd()
     return render(request, 'run.html', {"test": out})
 
 
