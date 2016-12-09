@@ -2,12 +2,12 @@ from subprocess import Popen, PIPE
 
 
 def execut():
-	cmd = ['python2 ./run_test.py']
+	cmd = ["py", "-2", "./scripts/run_test.py"]
 	p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
 
 	out, err = p.communicate()
 
-	out = out.decode("utf-8")
+	out = out.decode("utf8")
 	return out
 
-print(execut())
+#print(execut())
