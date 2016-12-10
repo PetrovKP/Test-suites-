@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/PetrovKP/test-suites.svg?branch=master)] (https://travis-ci.org/PetrovKP/test-suites)[![codecov](https://codecov.io/gh/PetrovKP/test-suites/branch/master/graph/badge.svg)](https://codecov.io/gh/PetrovKP/test-suites)
+[![Build Status](https://travis-ci.org/PetrovKP/test-suites.svg?branch=master)](https://travis-ci.org/PetrovKP/test-suites)   [![codecov](https://codecov.io/gh/PetrovKP/test-suites/branch/master/graph/badge.svg)](https://codecov.io/gh/PetrovKP/test-suites)
 
 ### Задание
 С помощью Django создать веб-приложение, отображающее список *test suites* 
@@ -8,15 +8,11 @@
 
 ### По пунктам
 
-1) Разработка шаблона **[DONE]**
-
-2) Отображение *test suites* **[DONE]**
-
-3) Запуск test suites посредством вызова скрипта 5 **[DONE]**
-
-4) Форма для ввода нового test_suits **[DONE]**
-
-5) Формирование и вёрстка stdout
+1.  Разработка шаблона **[DONE]**
+1.  Отображение *test suites* **[DONE]**
+1.  Запуск test suites посредством вызова скрипта 5 **[DONE]**
+1.  Форма для ввода нового test_suits **[DONE]**
+1.  Формирование и вёрстка stdout
 
 ### Инструменты
 
