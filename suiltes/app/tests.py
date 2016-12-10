@@ -41,8 +41,8 @@ class SuitesTest(TestCase):
 
     def test_template_run(self):
         """Проверка шаблона при запуске"""
-        resp = self.client.post('/add/', {'name': 'Тест1', 'run': 'python2 run_test.py'})
+        resp = self.client.post('/add/', {'name': 'Тест1', 'run': ''})
 
-        resp = self.client.post('', {'name': 'Тест1', 'run': 'python2 run_test.py'})
+        resp = self.client.post('', {'name': 'Тест1'})
 
         self.assertTemplateUsed(resp, 'run.html')
