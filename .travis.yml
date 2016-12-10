@@ -15,7 +15,7 @@ install:
 
 script:
   - python suiltes/manage.py test app
-  - coverage suiltes/run manage.py test app
+  - coverage run suiltes/manage.py test app
 
 after_success:
   - codecov
