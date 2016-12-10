@@ -17,9 +17,12 @@ install:
   - pip install coverage
   - pip install codecov
 
+before_script:
+  - cd suiltes
+
 script:
-  - python suiltes/manage.py test app
-  - coverage run suiltes/manage.py test app
+  - python manage.py test app
+  - coverage run manage.py test app
 
 after_success:
   - codecov
