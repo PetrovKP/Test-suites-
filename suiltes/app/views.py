@@ -14,13 +14,12 @@ def execute(command):
         stdout = PIPE,
         stderr = PIPE,
         shell = True,
-        cwd = path.abspath(path.join(pardir, 'scripts'))
+        cwd = path.join(pardir, 'scripts')
     )
 
     out, err = process.communicate()
 
     out = out.decode("utf-8")
-    # print(err)
     return out
 
 
