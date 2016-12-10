@@ -14,7 +14,7 @@ def execute(command):
         stdout = PIPE,
         stderr = PIPE,
         shell = True,
-        cwd = path.join(pardir, 'scripts')
+        cwd = path.abspath(path.join(pardir, 'scripts'))
     )
 
     out, err = process.communicate()
