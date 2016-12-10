@@ -25,6 +25,7 @@ def execute(command):
     return out
 
 
+
 # Стартовая страница
 def index(request):
     if request.method == 'POST':

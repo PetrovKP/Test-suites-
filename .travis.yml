@@ -5,16 +5,15 @@ notifications:
 
 language: python
 
-services:
-  - mysql
-
 python:
   - 3.4
 
 install:
   - pip install -r requirements.txt
+
 before_script:
-  - mysql -e 'create database suites;'
-  - python ./suiltes/manage.py migrate
-  # - python ./suiltes/manage.py syncdb --noinput
-script: ./suiltes/manage.py test app
+  - python suiltes/manage.py makemigrations
+  - python suiltes/manage.py migrate
+
+script:
+  - python suiltes/manage.py test
