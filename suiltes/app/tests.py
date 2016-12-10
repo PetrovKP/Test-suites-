@@ -24,17 +24,25 @@ class SuitesTest(TestCase):
         test = Test.objects.get(name = 'Тест1')
         self.assertEqual(test.run, 'python2 run_test.py')
 
-    def test_delete (self):
+    def test_delete(self):
         """Проверка удаления теста"""
         resp = self.client.post('/delete/', {'name': '', 'run': ''})
 
         self.assertEqual(resp.status_code, 200)
 
-    def test_del_is_object_in_db (self):
+    def test_del_is_object_in_db(self):
         """Проверка удаления добавленного теста из бд"""
-        resp = self.client.post('/add/', { 'name': 'Тест1', 'run': 'python2 run_test.py' })
+        resp = self.client.post('/add/', {'name': 'Тест1', 'run': 'python2 run_test.py'})
 
         resp = self.client.post('/delete/', {'name': 'Тест1', 'run': 'python2 run_test.py'})
 
         tests = Test.objects.all()
         self.assertFalse(tests)
+
+    def test_template_run(self):
+        """Проверка шаблона при запуске"""
+        resp = self.client.post('/add/', {'name': 'Тест1', 'run': 'python2 run_test.py'})
+
+        resp = self.client.post('', {'name': 'Тест1', 'run': 'python2 run_test.py'})
+
+        self.assertTemplateUsed(resp, 'run.html')

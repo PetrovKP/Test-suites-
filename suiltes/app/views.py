@@ -20,10 +20,8 @@ def execute(command):
     out, err = process.communicate()
 
     out = out.decode("utf-8")
-    print(out)
     # print(err)
     return out
-
 
 
 # Стартовая страница
