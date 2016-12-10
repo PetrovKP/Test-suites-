@@ -3,7 +3,29 @@ from django.db import IntegrityError
 
 from .models import Test, UploadScriptForm
 
-from os import path
+from subprocess import Popen, PIPE
+from os import path, pardir
+
+import os
+
+
+# Запуск указанного скрипта
+def execute(command):
+    process = Popen(
+        command,
+        stdout = PIPE,
+        stderr = PIPE,
+        shell = True,
+        cwd = path.join(pardir, 'scripts')
+    )
+
+    out, err = process.communicate()
+
+    out = out.decode("utf-8")
+    print(out)
+    # print(err)
+    return out
+
 
 # Стартовая страница
 def index(request):
@@ -18,9 +40,10 @@ def index(request):
 
 # Запуск скрипта и вывод результов
 def run(request):
-    test = Test.objects.get(id=request.session['id'])
 
-    return render(request, 'run.html', {"test": test.run})
+    test = Test.objects.get(id = request.session['id'])
+    out = execute(test.run)
+    return render(request, 'run.html', {"test": out})
 
 
 # Добавления теста
@@ -35,6 +58,7 @@ def add_test(request):
 
     return render(request, "add_test.html")
 
+
 # Добавления скрипта
 def add_script(request):
     if request.method == 'POST':
@@ -48,9 +72,10 @@ def add_script(request):
 
 
 def handle_uploaded_file(file, name):
-    with open(path.join('..', 'scripts/') + name , 'wb+') as destination:
+    with open(path.join('..', 'scripts/') + name, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
+
 
 # Удаление теста
 def delete(request):
