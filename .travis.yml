@@ -10,11 +10,12 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install coverage codecov
+  - pip install coverage
+  - pip install codecov
 
 script:
   - python suiltes/manage.py test app
-  - coverage suiltes/run manage.py test
+  - coverage suiltes/run manage.py test app
 
 after_success:
-  codecov
+  - codecov
