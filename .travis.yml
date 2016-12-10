@@ -11,9 +11,9 @@ python:
 install:
   - pip install -r requirements.txt
 
-before_script:
-  - python suiltes/manage.py makemigrations
-  - python suiltes/manage.py migrate
+#before_script:
+#  - python suiltes/manage.py makemigrations
+#  - python suiltes/manage.py migrate
 
 script:
   - python suiltes/manage.py test
