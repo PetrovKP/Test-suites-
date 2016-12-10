@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'suiltes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'suites',
+        'NAME': 'suites.db',
     },
 }
 
