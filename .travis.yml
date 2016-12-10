@@ -5,6 +5,10 @@ notifications:
 
 language: python
 
+branches:
+  only:
+    - master
+
 python:
   - 3.4
 
