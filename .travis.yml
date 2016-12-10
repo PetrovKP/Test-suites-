@@ -13,7 +13,8 @@ install:
   - pip install django-bootstrap3
 
 before_script:
-  - python ./suiltes/manage.py migrate
+  - python suiltes/manage.py makemigrations
+  - python suiltes/manage.py migrate
 
 script:
-  - python ./suiltes/manage.py test
+  - python suiltes/manage.py test
