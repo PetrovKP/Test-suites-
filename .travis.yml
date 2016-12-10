@@ -12,10 +12,7 @@ python:
   - 3.4
 
 install:
-  - pip install Django==1.9
-  - pip install django-bootstrap3
-  - pip install PyMySQL
-
+  - pip install -r requirements.txt
 before_script:
   - mysql -e 'create database suites;'
   - python ./suiltes/manage.py migrate
