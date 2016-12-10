@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/PetrovKP/test-suites.svg?branch=master)](https://travis-ci.org/PetrovKP/test-suites)
+[![Build Status](https://travis-ci.org/PetrovKP/test-suites.svg?branch=master)](https://travis-ci.org/PetrovKP/test-suites)[![codecov](https://codecov.io/gh/PetrovKP/test-suites/branch/master/graph/badge.svg)](https://codecov.io/gh/PetrovKP/test-suites)
 
 ### Задание
 С помощью Django создать веб-приложение, отображающее список *test suites* 
@@ -62,5 +62,4 @@
 
 * Python  3.4
 * Django  1.9
-* [PyMySQL 0.7](https://github.com/PyMySQL/PyMySQL/)
 * [Bootstrap 3](https://github.com/dyve/django-bootstrap3)
