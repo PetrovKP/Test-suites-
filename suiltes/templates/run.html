@@ -4,11 +4,40 @@
 
 {% block title %}Запуск{% endblock %}
 
-{% block content %}
-    <p> Запускаю<p>
-    <div class="alert alert-success">
-    {{ test }}
+{% block content2 %}
+    {%  if not list_test %}
 
-    </div>
+        <div class="alert alert-warning" role="alert">
+            Нет тестов или не правильно указана команда запуска
+        </div>
+
+    {% else %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Результат </h3>
+            </div>
+            <div class="panel-body">
+                <b>{{ conclusion | linebreaks }}</b>
+            </div>
+
+        </div>
+
+        {%for title, log, res in list_test%}
+            {% if res == 'PASS' %}
+                <div class="panel panel-success">
+            {% else %}
+                <div class="panel panel-danger">
+            {% endif %}
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ title }}</h3>
+                </div>
+
+                <div class="panel-body">
+                    {{ log | linebreaks }}
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endif %}
 
 {% endblock %}
