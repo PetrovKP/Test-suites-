@@ -15,7 +15,7 @@ def execute(command):
         stdout = PIPE,
         stderr = PIPE,
         shell = True,
-        cwd = path.join(pardir, 'scripts')
+        cwd = path.join(pardir, "scripts")
     )
 
     out, err = process.communicate()
@@ -23,15 +23,17 @@ def execute(command):
 
     list_test = []
     conclusion = ''
+
+    # Магический парсинг
     if out:
         out, conclusion = out.split("========= SUMMARY ==========")
-        p = re.compile(r'\=+.*\=+|\n\n')
-        temp = p.split(out)
+        pattern = re.compile(r'\=+.*\=+|\n\n')
+        temp = pattern.split(out)
         title = temp[0::3]
         log = temp[1::3]
         res = [st.replace("\n", "") for st in temp[2::3]]
-
         list_test = zip(title, log, res)
+
     return list_test, conclusion
 
 
@@ -52,7 +54,7 @@ def run(request):
     test = Test.objects.get(id = request.session['id'])
     list_test, conclusion = execute(test.run)
 
-    return render(request, 'run.html', {"list_test": list_test, "conclusion": conclusion})
+    return render(request, "run.html", {"list_test": list_test, "conclusion": conclusion})
 
 
 # Добавления теста
@@ -76,8 +78,8 @@ def delete_test(request):
             test = Test.objects.get(name = request.POST['name'])
             test.delete()
             tests_name.remove(test.name)
-            return render(request, "delete_test.html", { "isAdd": 'ok', "list_test": tests_name })
+            return render(request, "delete_test.html", {"isAdd": 'ok', "list_test": tests_name})
         except:
-            return render(request, "delete_test.html", { "isAdd": 'error', "list_test": tests_name })
+            return render(request, "delete_test.html", {"isAdd": 'error', "list_test": tests_name})
 
-    return render(request, "delete_test.html", { "list_test": tests_name })
+    return render(request, "delete_test.html", {"list_test": tests_name})
