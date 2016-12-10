@@ -26,6 +26,7 @@ def execute(command):
 
     # Магический парсинг
     if out:
+        out = out.replace("\r", "")
         out, conclusion = out.split("========= SUMMARY ==========")
         pattern = re.compile(r'\=+.*\=+|\n\n')
         temp = pattern.split(out)
