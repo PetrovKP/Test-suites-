@@ -31,3 +31,7 @@ var/
 # virtualenv
 venv/
 ENV/
+
+# other
+*.coverage
+Log.txt
