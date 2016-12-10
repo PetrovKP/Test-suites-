@@ -10,8 +10,8 @@
         <div class="form-group">
             <label for="name">Выберете тест</label>
             <select name="name" id="name" class="form-control">
-                {% for name in list_test %}
-                    <option>{{ name }}</option>
+                {% for test in list_test %}
+                    <option>{{ test }}</option>
                 {% endfor %}
             </select>
         </div>

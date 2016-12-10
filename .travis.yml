@@ -9,8 +9,7 @@ python:
   - 3.4
 
 install:
-  - pip install Django==1.9
-  - pip install django-bootstrap3
+  - pip install -r requirements.txt
 
 before_script:
   - python suiltes/manage.py makemigrations
