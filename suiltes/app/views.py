@@ -5,6 +5,7 @@ from .models import Test
 
 from subprocess import Popen, PIPE
 from os import path, pardir
+import re
 
 
 # Запуск указанного скрипта
@@ -18,9 +19,20 @@ def execute(command):
     )
 
     out, err = process.communicate()
-
     out = out.decode("utf-8")
-    return out
+
+    list_test = []
+    conclusion = ''
+    if out:
+        out, conclusion = out.split("========= SUMMARY ==========")
+        p = re.compile(r'\=+.*\=+|\n\n')
+        temp = p.split(out)
+        title = temp[0::3]
+        log = temp[1::3]
+        res = [st.replace("\n", "") for st in temp[2::3]]
+
+        list_test = zip(title, log, res)
+    return list_test, conclusion
 
 
 # Стартовая страница
@@ -38,8 +50,9 @@ def index(request):
 def run(request):
 
     test = Test.objects.get(id = request.session['id'])
-    out = execute(test.run)
-    return render(request, 'run.html', {"test": out})
+    list_test, conclusion = execute(test.run)
+
+    return render(request, 'run.html', {"list_test": list_test, "conclusion": conclusion})
 
 
 # Добавления теста
