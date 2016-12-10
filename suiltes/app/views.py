@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from django.db import IntegrityError
 
-from .models import Test, UploadScriptForm
+from .models import Test
 
 from subprocess import Popen, PIPE
 from os import path, pardir
-
-import os
 
 
 # Запуск указанного скрипта
@@ -59,34 +57,16 @@ def add_test(request):
     return render(request, "add_test.html")
 
 
-# Добавления скрипта
-def add_script(request):
-    if request.method == 'POST':
-        form = UploadScriptForm(request.POST, request.FILES)
-        if form.is_valid():
-            handle_uploaded_file(request.FILES['script'], request.FILES['script'].name)
-            return render(request, "add_script.html", {'form': form})
-    else:
-        form = UploadScriptForm()
-    return render(request, "add_script.html", {'form': form})
-
-
-def handle_uploaded_file(file, name):
-    with open(path.join('..', 'scripts/') + name, 'wb+') as destination:
-        for chunk in file.chunks():
-            destination.write(chunk)
-
-
 # Удаление теста
-def delete(request):
+def delete_test(request):
     tests_name = [obj.name for obj in Test.objects.all()]
     if request.method == 'POST':
         try:
             test = Test.objects.get(name = request.POST['name'])
             test.delete()
             tests_name.remove(test.name)
-            return render(request, "delete.html", {"isAdd": 'ok', "list_test": tests_name})
+            return render(request, "delete_test.html", { "isAdd": 'ok', "list_test": tests_name })
         except:
-            return render(request, "delete.html", {"isAdd": 'error', "list_test": tests_name})
+            return render(request, "delete_test.html", { "isAdd": 'error', "list_test": tests_name })
 
-    return render(request, "delete.html", {"list_test": tests_name})
+    return render(request, "delete_test.html", { "list_test": tests_name })
