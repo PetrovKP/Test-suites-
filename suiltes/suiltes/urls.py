@@ -20,6 +20,7 @@ from app import views
 
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
+    url(r'^run/$', views.list_run, name = 'list_run'),
     url(r'^add/$', views.add_test, name = 'add_test'),
     url(r'^delete/$', views.delete_test, name = 'delete_test'),
 ]
