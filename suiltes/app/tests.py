@@ -43,6 +43,6 @@ class SuitesTest(TestCase):
         """Проверка шаблона при запуске"""
         resp = self.client.post('/add/', {'name': 'Тест1', 'run': ''})
 
-        resp = self.client.post('', {'name': 'Тест1'})
+        resp = self.client.post('/run/', {'name': 'Тест1'})
 
         self.assertTemplateUsed(resp, 'run.html')

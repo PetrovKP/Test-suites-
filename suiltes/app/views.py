@@ -40,13 +40,19 @@ def execute(command):
 
 # Стартовая страница
 def index(request):
+    list_test = [(obj.id, obj.name, obj.run) for obj in Test.objects.all()]
+    return render(request, "index.html", {"list_test": list_test})
+
+
+# Список тестов доступных для запуска
+def list_run(request):
     if request.method == 'POST':
         test = Test.objects.get(name = request.POST['name'])
         request.session['id'] = test.id
         return run(request)
 
     tests_name = [obj.name for obj in Test.objects.all()]
-    return render(request, "index.html", {"list_test": tests_name})
+    return render(request, "list_run.html", {"list_test": tests_name})
 
 
 # Запуск скрипта и вывод результов

@@ -4,19 +4,25 @@
 
 {% block title %}Старт{% endblock %}
 
-{% block content %}
+{% block content_full %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="name">Выберете тест</label>
-            <select name="name" class="form-control">
-                {% for name in list_test %}
-                    <option>{{ name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Запустить</button>
-    </form>
+    <table class="table table-striped">
+        <thead class="thead-default">
+            <tr>
+                <th>№</th>
+                <th>Имя теста</th>
+                <th>Строка запуска</th>
+            </tr>
+        </thead>
+
+        {% for id, name, run in list_test %}
+            <tr>
+                <th scope="row">{{ id }}</th>
+                <td>{{ name }}</td>
+                <td>{{ run }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
 
 {% endblock %}
