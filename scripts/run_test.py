@@ -89,7 +89,10 @@ def find_xmls():
 #
 
 if __name__ == '__main__':
-    find_xmls()
+    if (len(sys.argv) > 1):
+        run_tests(sys.argv[1])
+    else:
+        find_xmls()
     # общая статистика
     print '========= SUMMARY =========='
     print 'Passed:', _passed
